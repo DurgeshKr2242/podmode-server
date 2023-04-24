@@ -7,6 +7,8 @@ import {
   getAllPodcast,
   getPodcastByUserId,
   viewAudio,
+  getRecentPodcast,
+  getPopularPodcast,
 } from "../controllers/podcast";
 const router = Router();
 import { protect } from "../module/user";
@@ -26,8 +28,10 @@ admin.initializeApp({
 //
 
 router.get("/", getAllPodcast);
+router.get("/recent", getRecentPodcast);
 router.get("/view/:id", viewAudio);
 router.get("/podcastByUserId", protect, getPodcastByUserId);
+router.get("/popular", getPopularPodcast);
 
 router.post(
   "/upload-audio",
@@ -99,6 +103,5 @@ router.post(
 
 // router.post("/", multer.single("podcast"), createPodcast);
 router.get("/search", (req, res) => {});
-router.get("/popular", (req, res) => {});
 
 export default router;

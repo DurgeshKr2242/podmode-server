@@ -63,3 +63,41 @@ export const viewAudio = async (req, res) => {
     res.status(500).json({ error: "Can" });
   }
 };
+
+export const getRecentPodcast = async (req, res) => {
+  try {
+    const podcasts = await prisma.podcast.findMany({
+      take: 10,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return res.json({ podcasts });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      message: "Something went wrong while fetching the most recent podcast",
+    });
+  }
+};
+
+export const getPopularPodcast = async (req, res) => {
+  try {
+    const podcasts = await prisma.podcast.findMany({
+      orderBy: {
+        views: "desc",
+      },
+    });
+
+    return res.json({ podcasts });
+
+    //
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({
+        message: "Something went wrong while fetching most popular podcasts",
+      });
+  }
+};
