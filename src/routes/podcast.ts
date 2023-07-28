@@ -17,7 +17,6 @@ import path from "path";
 import saltedMd5 from "salted-md5";
 import multer from "multer";
 import admin from "firebase-admin";
-import { log } from "console";
 
 var serviceAccount = require("../module/firebase/service/flipr-hackathon-3edc1-firebase-adminsdk-5zb03-6756eb6379.json");
 admin.initializeApp({

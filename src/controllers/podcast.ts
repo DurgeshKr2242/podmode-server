@@ -94,10 +94,8 @@ export const getPopularPodcast = async (req, res) => {
     //
   } catch (err) {
     console.log(err);
-    res
-      .status(500)
-      .json({
-        message: "Something went wrong while fetching most popular podcasts",
-      });
+    res.status(500).json({
+      message: "Something went wrong while fetching most popular podcasts",
+    });
   }
 };
